@@ -1,0 +1,93 @@
+Java OOPs - Basic Notes
+
+1. Core Concepts
+    - Class: blueprint for objects. Contains fields (state) and methods (behavior).
+    - Object: instance of a class, created with 'new'.
+    - Encapsulation: keep fields private, expose via public getters/setters.
+    - Inheritance: a class (subclass) extends another (superclass) to reuse code.
+    - Polymorphism:
+      - Compile-time (method overloading): same method name, different parameter lists.
+      - Runtime (method overriding): subclass provides specific implementation of superclass method.
+    - Abstraction:
+      - Abstract class: can have abstract and concrete methods; cannot be instantiated.
+      - Interface: contract for classes; Java 8+ supports default and static methods.
+
+2. Basic Syntax
+    - Class:
+      class Person {
+            private String name;
+            private int age;
+            public Person(String name, int age) { this.name = name; this.age = age; }
+            public String getName() { return name; }
+            public void setName(String n) { name = n; }
+            public void speak() { System.out.println("Hello"); }
+      }
+    - Create object:
+      Person p = new Person("Alice", 30);
+      p.speak();
+
+3. Constructors
+    - Special method with no return type, name equals class name.
+    - Default constructor created if none provided.
+    - Can overload constructors.
+    - Use 'this(...)' to call another constructor in same class.
+
+4. Access Modifiers
+    - public: accessible everywhere.
+    - protected: accessible in package and subclasses.
+    - default (package-private): accessible within same package.
+    - private: accessible only within the class.
+
+5. static and final
+    - static: belongs to class, not instance (static fields/methods).
+    - final variable: constant; final method: cannot be overridden; final class: cannot be extended.
+
+6. Inheritance & super
+    - class Student extends Person { }
+    - Use super(...) to call superclass constructor.
+    - Use super.method() to call superclass method.
+
+7. Method Overloading vs Overriding
+    - Overloading: same name, different params in same class.
+    - Overriding: same signature in subclass; @Override annotation recommended.
+    - For overriding, runtime type of object determines which method runs.
+
+8. Interfaces and Abstract Classes
+    - interface Walkable { void walk(); }
+    - class Dog implements Walkable { public void walk(){...} }
+    - abstract class Animal { abstract void makeSound(); }
+
+9. instanceof
+    - Check type at runtime: if (obj instanceof Person) { ... }
+
+10. Inner Classes & Anonymous Classes
+     - class Outer { class Inner { } }
+     - Anonymous for quick implementations: new Runnable() { public void run() { } };
+
+11. Enum
+     - enum Day { MON, TUE, WED, THU, FRI, SAT, SUN }
+
+12. Common Practices
+     - Keep fields private, use getters/setters.
+     - Prefer composition over inheritance unless "is-a" relationship exists.
+     - Favor interfaces for API design; use abstract classes for shared implementation.
+     - Use meaningful class and method names, keep methods short and single-responsibility.
+
+13. Simple Example Demonstrating OOPs
+    class Shape {
+         public double area() { return 0; }
+    }
+    class Circle extends Shape {
+         private double r;
+         public Circle(double r) { this.r = r; }
+         @Override public double area() { return Math.PI * r * r; }
+    }
+    // Usage:
+    Shape s = new Circle(2.0);
+    double a = s.area(); // runtime polymorphism
+
+References (quick)
+ - java.lang package for base types
+ - Use official Java tutorials for deeper reading (oracle.com/java)
+
+End of notes.

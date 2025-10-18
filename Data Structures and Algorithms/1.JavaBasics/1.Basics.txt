@@ -1,0 +1,124 @@
+Java Basics Notes
+
+1) Ecosystem
+- JDK: Java Development Kit (compiler javac, tools).
+- JRE: Java Runtime Environment (JVM + class libraries).
+- JVM: Java Virtual Machine (runs bytecode, platform independence).
+- Compile/run:
+    javac MyClass.java
+    java MyClass
+
+2) Source file & structure
+- File name usually matches public class: MyClass.java -> public class MyClass
+- package declaration (optional) at top: package com.example;
+- import statements for other packages/classes.
+
+3) Primitive types
+- boolean (true/false)
+- byte (8-bit), short (16-bit), int (32-bit), long (64-bit)
+- float (32-bit), double (64-bit)
+- char (16-bit Unicode)
+- Default numeric literal: int (use L for long, F for float)
+
+4) Reference types
+- Classes, interfaces, arrays, enums
+- Strings are immutable objects (java.lang.String)
+
+5) Variables & scope
+- Local variables: within methods (must be initialized before use)
+- Instance variables: fields on objects (default values)
+- Static variables: class-level shared fields
+- Access modifiers: public, protected, private, (default/package-private)
+
+6) Basic syntax
+- Method: returnType name(params) { ... }
+- main entry point:
+    public static void main(String[] args) { ... }
+- Comments: // single-line, /* multi-line */, /** javadoc */
+
+7) Control flow
+- if / else if / else
+- switch (supports int, enum, String)
+- for (init; cond; update), enhanced for (for-each)
+- while, do-while
+- break, continue, return
+
+8) OOP fundamentals
+- Class: blueprint; Object: instance
+- Encapsulation: fields + accessors (get/set)
+- Inheritance: class Sub extends Super
+- Polymorphism: reference type vs runtime type; method overriding
+- Abstraction: abstract classes, interfaces
+- Interfaces: default and static methods allowed (since Java 8)
+- Composition favored over inheritance
+
+9) Constructors
+- Special methods to initialize objects
+- Can be overloaded
+- Use this(...) to call another constructor
+
+10) Static and final
+- static: class-level methods/fields
+- final: constant for variables, cannot override for methods, cannot extend final class
+
+11) Exceptions
+- try { } catch(Exception e) { } finally { }
+- Checked vs unchecked (RuntimeException)
+- throw and throws clauses
+- try-with-resources for AutoCloseable
+
+12) Collections overview
+- java.util: List, Set, Map, Queue (interfaces)
+- Implementations: ArrayList, LinkedList, HashSet, TreeSet, HashMap, TreeMap
+- Iterate with for-each, Iterator, or Streams
+
+13) Generics
+- Type-safe containers: List<String>, Map<K,V>
+- Wildcards: ?, ? extends T, ? super T
+
+14) Concurrency basics
+- Thread creation: extend Thread or implement Runnable
+- synchronized for simple locking
+- java.util.concurrent for higher-level constructs (ExecutorService, ConcurrentHashMap)
+
+15) I/O
+- java.io: Streams (InputStream/OutputStream, Reader/Writer)
+- java.nio: buffers, channels, paths, Files utility
+- Use try-with-resources for closing
+
+16) Lambda & Streams (since Java 8)
+- Lambda: (args) -> expression
+- Streams for functional-style processing of collections: filter, map, collect
+
+17) Common idioms
+- Immutable objects: private final fields, no setters
+- Equals and hashCode contract for collections
+- toString for debugging
+
+18) Build & tools
+- javac/java, jar
+- Build tools: Maven, Gradle
+- IDEs: IntelliJ IDEA, Eclipse, VS Code
+
+Small examples
+
+Hello world:
+public class Hello {
+        public static void main(String[] args) {
+                System.out.println("Hello, Java!");
+        }
+}
+
+Simple class:
+public class Person {
+        private String name;
+        public Person(String name) { this.name = name; }
+        public String getName() { return name; }
+}
+
+Notes
+- Prefer small focused classes and methods.
+- Keep exceptions specific and document behavior.
+- Readability and immutability improve correctness.
+
+End of notes.

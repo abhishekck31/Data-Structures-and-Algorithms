@@ -1,0 +1,72 @@
+Basics of Recursion
+===================
+
+1. What is recursion?
+- Recursion: a function that calls itself to solve a smaller instance of the same problem.
+- Useful when a problem can be defined in terms of smaller subproblems.
+
+2. Anatomy of a recursive routine
+- Base case(s): one or more conditions that return a result without further recursion.
+- Recursive case(s): the part that breaks the problem into smaller instances and calls the function again.
+- Always ensure each recursive call progresses toward a base case.
+
+3. Call stack and resources
+- Each call creates a stack frame (local variables, return address).
+- Depth of recursion = number of nested calls.
+- Risk: stack overflow if depth is too large.
+- Space complexity includes recursion depth (O(depth)).
+
+4. Common simple examples (Java-style pseudo-implementations)
+- Factorial (n!):
+    // recursive
+    int factorial(int n) {
+        if (n <= 1) return 1;          // base case
+        return n * factorial(n - 1);   // recursive case
+    }
+
+- Fibonacci (naive recursive, exponential time):
+    int fib(int n) {
+        if (n <= 1) return n;
+        return fib(n - 1) + fib(n - 2);
+    }
+
+- Fibonacci with memoization (DP):
+    int fibMemo(int n, int[] memo) {
+        if (n <= 1) return n;
+        if (memo[n] != -1) return memo[n];
+        memo[n] = fibMemo(n - 1, memo) + fibMemo(n - 2, memo);
+        return memo[n];
+    }
+
+5. Tail recursion
+- Tail recursion: recursive call is the last operation; can be optimized into iteration by compilers that support tail-call elimination.
+- Java does NOT guarantee tail-call optimization; prefer iterative solutions for deep recursion in Java.
+
+6. Backtracking (recursion pattern)
+- Use recursion to explore choices, undo (backtrack) after exploring a branch.
+- Examples: permutations, combinations, N-Queens, subset sum, DFS on graphs.
+
+7. Complexity analysis tips
+- Write recurrence T(n) and solve (substitution, master theorem, recursion tree).
+- Consider both time and auxiliary space (stack + temporary structures).
+- Memoize overlapping subproblems to reduce exponential recursion to polynomial.
+
+8. Practical guidelines
+- Always define and test base cases first.
+- Check progress: ensure parameters get closer to base case.
+- Prefer iterative solution in languages without tail-call elimination for deep recursion.
+- Use memoization or bottom-up DP for overlapping subproblems.
+- Keep recursion depth small when possible (divide-and-conquer algorithms often reduce depth).
+
+9. Debugging tips
+- Trace a few calls on paper (or use logs) to verify base/recursive cases.
+- Print entry/exit values to understand call flow.
+- Use small inputs to reproduce incorrect behavior.
+
+Quick checklist before using recursion
+- Is there a clear base case?
+- Does each call move toward the base case?
+- Is recursion depth manageable?
+- Are there overlapping subproblems (use memoization if yes)?
+
+End of notes.
